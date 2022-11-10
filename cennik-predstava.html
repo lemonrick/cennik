@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
+    <title>cennik</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//db.onlinewebfonts.com/c/25650dcc530c1ab43db3db3afaea507c?family=Trueno" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<style>
+    @font-face {
+        font-family: "Trueno";
+        src: url("https://db.onlinewebfonts.com/t/25650dcc530c1ab43db3db3afaea507c.eot"); /* IE9*/
+        src: url("https://db.onlinewebfonts.com/t/25650dcc530c1ab43db3db3afaea507c.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+        url("https://db.onlinewebfonts.com/t/25650dcc530c1ab43db3db3afaea507c.woff2") format("woff2"), /* chrome firefox */
+        url("https://db.onlinewebfonts.com/t/25650dcc530c1ab43db3db3afaea507c.woff") format("woff"), /* chrome firefox */
+        url("https://db.onlinewebfonts.com/t/25650dcc530c1ab43db3db3afaea507c.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+        url("https://db.onlinewebfonts.com/t/25650dcc530c1ab43db3db3afaea507c.svg#Trueno") format("svg"); /* iOS 4.1- */
+    }
+    @font-face {
+        font-family: "Gotham";
+        src: url("//db.onlinewebfonts.com/t/edc378fa3251080c5b508b220462efca.eot");
+        src: url("//db.onlinewebfonts.com/t/edc378fa3251080c5b508b220462efca.eot?#iefix") format("embedded-opentype"),
+        url("//db.onlinewebfonts.com/t/edc378fa3251080c5b508b220462efca.woff2") format("woff2"),
+        url("//db.onlinewebfonts.com/t/edc378fa3251080c5b508b220462efca.woff") format("woff"),
+        url("//db.onlinewebfonts.com/t/edc378fa3251080c5b508b220462efca.ttf") format("truetype"),
+        url("//db.onlinewebfonts.com/t/edc378fa3251080c5b508b220462efca.svg#Gotham") format("svg"); }
+    * {
+        font-family: Trueno;
+    }
+    input[type="number"]{
+        font-family: 'Bahnschrift light';
+        color: black !important;
+        width: 17.021vw;
+        height: 8.511vw;
+        border: none;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    /*body {
+        /-moz-transform:scale(2);
+        -moz-transform-origin: 0 0;
+        -o-transform: scale(2);
+        -o-transform-origin: 0 0;
+        -webkit-transform: scale(2);
+        -webkit-transform-origin: 0 0;
+        overflow: hidden;
+    }*/
+    #toto {
+        margin-top: 4.2555vw;
+        /*margin-left: calc((100% - 500px) / 4) !important;*/
+    }
+</style>
+<body>
+
+<script>
+    let prve = [0.35, 0.20, 0.17]; //9 x 13
+    let druhe = [0.40, 0.23, 0.19]; //10 x 15
+    let tretie = [0.80, 0.50, 0.50]; //13 x 18
+    let stvrte = [1.50, 1.10, 1.10]; //15 x 21
+    let piate = [3.90, 2.90, 2.90]; //20 x 30
+</script>
+
+<div class="container" id="toto" style="max-width: unset !important;"> <!-- style="width: 106.383vw;" -->
+    <div class="row" style="background-color: #B03D40;">
+        <div class="col-12 text-center text-white no-gutters" style="font-size: 10.213vw;height: 12.766vw;">
+            Cenník služieb
+        </div>
+        <div class="col-12 text-center text-uppercase font-weight-light"
+             style="font-family: 'Bahnschrift light'; color: lightgray; font-size: 5.532vw;">
+            Tlač fotografií
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center" style="font-size: 3.830vw;">
+            &nbsp;
+        </div>
+        <div class="col-12 text-center" style="font-size: 4.681vw;font-family: 'Bahnschrift light'">
+            Zadajte počet tlačených fotografií:
+        </div>
+    </div>
+    <div style="padding-right: 2.128vw;padding-left: 2.128vw;">
+    <div class="row" style="background-color: #E43A45;height: 10.638vw;margin-bottom: 1.277vw;
+    border-top-left-radius: 2.128vw;border-top-right-radius: 2.128vw;">
+        <div class="col-3 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;width: 23.4vw">
+            9 x 13
+        </div>
+        <div class="col-5 text-center" style="font-size: 5.532vw;padding: unset;color: lightgray; font-family: 'Bahnschrift light'">
+            <input type="number" pattern="\d*" class="parameter"
+                   name="field1" min="0" placeholder="0 ks" required style="margin-top: 0.9vw;">
+             x <span id="p1" style="font-size: 5.532vw;font-family: 'Bahnschrift light'"></span>
+        </div>
+        <div class="col-1 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
+            =
+        </div>
+        <div class="col-3 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
+            <span id="spolu1">0,00€</span>
+        </div>
+    </div>
+    <div class="row" style="background-color: #B03D40;height: 10.638vw;margin-bottom: 1.277vw;">
+        <div class="col-3 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;width: 23.4vw">
+            10 x 15
+        </div>
+        <div class="col-5 text-center" style="font-size: 5.532vw;padding: unset;color: lightgray; font-family: 'Bahnschrift light'">
+            <input type="number" pattern="\d*" class="parameter"
+                   name="field2" min="0" placeholder="0 ks" required style="margin-top: 0.9vw;">
+            x <span id="p2" style="font-size: 5.532vw;font-family: 'Bahnschrift light'"></span>
+        </div>
+        <div class="col-1 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
+            =
+        </div>
+        <div class="col-3 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
+            <span id="spolu2">0,00€</span>
+        </div>
+    </div>
+    <div class="row" style="background-color: #E43A45;height: 10.638vw;margin-bottom: 1.277vw;">
+        <div class="col-3 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;width: 23.4vw">
+            13 x 18
+        </div>
+        <div class="col-5 text-center" style="font-size: 5.532vw;padding: unset;color: lightgray; font-family: 'Bahnschrift light'">
+            <input type="number" pattern="\d*" class="parameter"
+                   name="field3" min="0" placeholder="0 ks" required style="margin-top: 0.9vw;">
+            x <span id="p3" style="font-size: 5.532vw;font-family: 'Bahnschrift light'"></span>
+        </div>
+        <div class="col-1 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
+            =
+        </div>
+        <div class="col-3 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
+            <span id="spolu3">0,00€</span>
+        </div>
+    </div>
+    <div class="row" style="background-color: #B03D40;height: 10.638vw;margin-bottom: 1.277vw;">
+        <div class="col-3 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;width: 23.1vw">
+            15 x 21
+        </div>
+        <div class="col-5 text-center" style="font-size: 5.532vw;padding: unset;color: lightgray; font-family: 'Bahnschrift light'">
+            <input type="number" pattern="\d*" class="parameter"
+                   name="field4" min="0" placeholder="0 ks" required style="margin-top: 0.9vw;">
+            x <span id="p4" style="font-size: 5.532vw;font-family: 'Bahnschrift light'"></span>
+        </div>
+        <div class="col-1 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
+            =
+        </div>
+        <div class="col-3 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
+            <span id="spolu4">0,00€</span>
+        </div>
+    </div>
+    <div class="row" style="background-color: #E43A45;height: 10.638vw;margin-bottom: 1.277vw;
+    border-bottom-left-radius: 2.128vw;border-bottom-right-radius: 2.128vw;">
+        <div class="col-3 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;width: 23.4vw">
+            20 x 30
+        </div>
+        <div class="col-5 text-center" style="font-size: 5.532vw;padding: unset;color: lightgray; font-family: 'Bahnschrift light'">
+            <input type="number" pattern="\d*" class="parameter"
+                   name="field5" min="0" placeholder="0 ks" required style="margin-top: 0.9vw;">
+            x <span id="p5" style="font-size: 5.532vw;font-family: 'Bahnschrift light'"></span>
+        </div>
+        <div class="col-1 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
+            =
+        </div>
+        <div class="col-3 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
+            <span id="spolu5">0,00€</span>
+        </div>
+    </div>
+    <div class="row" style="height: 10.638vw;margin-bottom: 1.277vw;">
+        <div class="col-9 text-center text-black" style="font-size: 8.085vw;padding: unset;margin-top: 0.638vw;">
+            Cena spolu
+        </div>
+
+        <div class="col-3 text-center text-white"
+             style="font-size: 5.532vw;padding: unset;padding-top: 1.5vw;margin-top: 0.638vw;background-color: black;border-radius: 2.128vw;">
+            <div class="total">0,00€</div>
+        </div>
+    </div>
+        <div class="row" style="height: 10.638vw;margin-bottom: 1.277vw;">
+            <div class="col-9 text-center text-black" style="font-size: 8.085vw;padding: unset;margin-top: 0.638vw;">
+            </div>
+            <div class="col-3 text-center text-black text-uppercase"
+                 style="font-size: 2.2vw;padding: unset;padding-top: 1.702vw;color: #E43A45;">
+                + 1 kupón za každých 100 fotiek
+            </div>
+        </div>
+        <!--<div class="row" style="height: 10.638vw;margin-bottom: 1.277vw;">
+            <div class="col-4 text-center text-black" style="font-size: 8.085vw;padding: unset;margin-top: 0.638vw;">
+            </div>
+            <div class="col-4 text-center text-black text-uppercase"
+                 style="font-size: 2.979vw;padding: unset;padding-top: 0.426vw;
+                 color: #E43A45 !important;border: 1.064vw #E43A45 solid;border-radius: 1.064vw">
+                <a href="https://fotokino.sk/" style="text-decoration: none;color: #E43A45 !important;">Objednať tlač <br> fotiek online</a>
+            </div>
+            <div class="col-4 text-center text-black" style="font-size: larger;padding: unset;margin-top: 0.638vw;">
+            </div>
+        </div>-->
+
+    </div>
+</div>
+
+</div>
+
+<script>
+    $("#p1").html(prve[0].toFixed(2).toString().replace(".", ",") + "€");
+    $("#p2").html(druhe[0].toFixed(2).toString().replace(".", ",") + "€");
+    $("#p3").html(tretie[0].toFixed(2).toString().replace(".", ",") + "€");
+    $("#p4").html(stvrte[0].toFixed(2).toString().replace(".", ",") + "€");
+    $("#p5").html(piate[0].toFixed(2).toString().replace(".", ",") + "€");
+</script>
+
+<script>
+    $(document).ready(function(){
+        $(".parameter").on("input",function() {
+            let total = 0;
+            $(".parameter").each(function(){
+                //console.log(this.name);
+                let zmena = 0;
+                switch (this.name) {
+                    case 'field1': //9 x 13
+                        zmena = prve[0];
+                        let c1 = 0;
+                        if (isNaN(parseInt($(this).val()))){
+                            c1 = 0;
+                        } else {
+                            c1 = parseInt($(this).val())
+                            if (c1 < 10){
+                                zmena = prve[0].toFixed(2);
+                                $("#p1").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            if (c1 > 9 && c1 < 100){
+                                zmena = prve[1].toFixed(2);
+                                $("#p1").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            if (c1 > 99){
+                                zmena = prve[2].toFixed(2);
+                                $("#p1").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            c1 *= zmena;
+                        }
+                        c1 = c1.toFixed(2);
+                        $("#spolu1").html(c1.toString().replace(".", ",") + "€");
+                        break;
+                    case 'field2': //10 x 15
+                        zmena = druhe[0];
+                        let c2 = 0;
+                        if (isNaN(parseInt($(this).val()))){
+                            c2 = 0;
+                        } else {
+                            //c2 = parseInt($(this).val()) * zmena;
+                            c2 = parseInt($(this).val())
+                            if (c2 < 10){
+                                zmena = druhe[0].toFixed(2);
+                                $("#p2").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            if (c2 > 9 && c2 < 100){
+                                zmena = druhe[1].toFixed(2);
+                                $("#p2").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            if (c2 > 99){
+                                zmena = druhe[2].toFixed(2);
+                                $("#p2").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            c2 *= zmena;
+                        }
+                        c2 = c2.toFixed(2);
+                        $("#spolu2").html(c2.toString().replace(".", ",") + "€");
+                        break;
+                    case 'field3':
+                        zmena = tretie[0];
+                        let c3 = 0;
+                        if (isNaN(parseInt($(this).val()))){
+                            c3 = 0;
+                        } else {
+                            //c3 = parseInt($(this).val()) * zmena;
+                            c3 = parseInt($(this).val())
+                            if (c3 < 10){
+                                zmena = tretie[0].toFixed(2);
+                                $("#p3").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            if (c3 > 9 && c3 < 100){
+                                zmena = tretie[1].toFixed(2);
+                                $("#p3").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            if (c3 > 99){
+                                zmena = tretie[2].toFixed(2);
+                                $("#p3").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            c3 *= zmena;
+                        }
+                        c3 = c3.toFixed(2);
+                        $("#spolu3").html(c3.toString().replace(".", ",") + "€");
+                        break;
+                    case 'field4':
+                        zmena = stvrte[0];
+                        let c4 = 0;
+                        if (isNaN(parseInt($(this).val()))){
+                            c4 = 0;
+                        } else {
+                            //c4 = parseInt($(this).val()) * zmena;
+                            c4 = parseInt($(this).val())
+                            if (c4 < 10){
+                                zmena = stvrte[0].toFixed(2);
+                                $("#p4").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            if (c4 > 9 && c4 < 100){
+                                zmena = stvrte[1].toFixed(2);
+                                $("#p4").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            if (c4 > 99){
+                                zmena = stvrte[2].toFixed(2);
+                                $("#p4").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            c4 *= zmena;
+                        }
+                        c4 = c4.toFixed(2);
+                        $("#spolu4").html(c4.toString().replace(".", ",") + "€");
+                        break;
+                    case 'field5':
+                        zmena = piate[0];
+                        let c5 = 0;
+                        if (isNaN(parseInt($(this).val()))){
+                            c5 = 0;
+                        } else {
+                            //c5 = parseInt($(this).val()) * zmena;
+                            c5 = parseInt($(this).val())
+                            if (c5 < 10){
+                                zmena = piate[0].toFixed(2);
+                                $("#p5").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            if (c5 > 9 && c5 < 100){
+                                zmena = piate[1].toFixed(2);
+                                $("#p5").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            if (c5 > 99){
+                                zmena = piate[2].toFixed(2);
+                                $("#p5").html(zmena.toString().replace(".", ",") + "€");
+                            }
+                            c5 *= zmena;
+                        }
+                        c5 = c5.toFixed(2);
+                        $("#spolu5").html(c5.toString().replace(".", ",") + "€");
+                        break;
+                }
+                if(!isNaN(parseInt($(this).val()))) {
+
+                    total+=parseInt($(this).val()) * zmena;
+                }
+            });
+            total = total.toFixed(2);
+            if (total >= 200){
+                $(".total").html("dohoda");
+            } else {
+                $(".total").html(total.toString().replace(".", ",") + "€");
+            }
+            //document.getElementById("total").innerHTML = total;
+        });
+    })
+</script>
+</body>
+</html>
