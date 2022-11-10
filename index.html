@@ -270,7 +270,11 @@
                             c2 *= zmena;
                         }
                         c2 = c2.toFixed(2);
-                        $("#spolu2").html(c2.toString().replace(".", ",") + "€");
+                        if (c2 >= 1000) {
+                            $("#spolu2").html("dohoda");
+                        } else {
+                            $("#spolu2").html(c2.toString().replace(".", ",") + "€");
+                        }
                         break;
                     case 'field3':
                         zmena = tretie[0];
@@ -295,7 +299,11 @@
                             c3 *= zmena;
                         }
                         c3 = c3.toFixed(2);
-                        $("#spolu3").html(c3.toString().replace(".", ",") + "€");
+                        if (c3 >= 1000) {
+                            $("#spolu3").html("dohoda");
+                        } else {
+                            $("#spolu3").html(c3.toString().replace(".", ",") + "€");
+                        }
                         break;
                     case 'field4':
                         zmena = stvrte[0];
@@ -320,7 +328,11 @@
                             c4 *= zmena;
                         }
                         c4 = c4.toFixed(2);
-                        $("#spolu4").html(c4.toString().replace(".", ",") + "€");
+                        if (c4 >= 1000) {
+                            $("#spolu4").html("dohoda");
+                        } else {
+                            $("#spolu4").html(c4.toString().replace(".", ",") + "€");
+                        }
                         break;
                     case 'field5':
                         zmena = piate[0];
@@ -345,7 +357,11 @@
                             c5 *= zmena;
                         }
                         c5 = c5.toFixed(2);
-                        $("#spolu5").html(c5.toString().replace(".", ",") + "€");
+                        if (c5 >= 1000) {
+                            $("#spolu5").html("dohoda");
+                        } else {
+                            $("#spolu5").html(c5.toString().replace(".", ",") + "€");
+                        }
                         break;
                 }
                 if(!isNaN(parseInt($(this).val()))) {
