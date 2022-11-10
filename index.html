@@ -241,7 +241,11 @@
                             c1 *= zmena;
                         }
                         c1 = c1.toFixed(2);
-                        $("#spolu1").html(c1.toString().replace(".", ",") + "€");
+                        if (c1 >= 1000) {
+                            $("#spolu1").html("dohoda");
+                        } else {
+                            $("#spolu1").html(c1.toString().replace(".", ",") + "€");
+                        }
                         break;
                     case 'field2': //10 x 15
                         zmena = druhe[0];
