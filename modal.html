@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic iframe</title>
+  <style>
+    .iframe-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #dynamicIframe {
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="iframe-container">
+  <iframe id="dynamicIframe" src="index.html"></iframe>
+</div>
+
+<script>
+  function adjustIframeSize() {
+    const windowHeight = window.innerHeight;
+    const windowWidth = window.innerWidth;
+
+    const widthAdjustment = 40;
+    const heightAdjustment = 30;
+
+    const adjustedWidth = windowWidth - widthAdjustment;
+    const adjustedHeight = windowHeight - heightAdjustment;
+
+    const iframe = document.getElementById("dynamicIframe");
+    iframe.style.height = adjustedHeight + "px";
+
+    const aspectRatio = 3 / 4;
+    let calculatedWidth = adjustedHeight * aspectRatio;
+
+    if (calculatedWidth > adjustedWidth) {
+      calculatedWidth = adjustedWidth;
+      iframe.style.height = (calculatedWidth / aspectRatio) + "px";
+    }
+
+    iframe.style.width = calculatedWidth + "px";
+  }
+
+  window.addEventListener("load", adjustIframeSize);
+  window.addEventListener("resize", adjustIframeSize);
+</script>
+
+</body>
+</html>
