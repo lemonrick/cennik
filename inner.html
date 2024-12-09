@@ -52,7 +52,7 @@
             <div class="col-5 text-center"
                  style="font-size: 5.532vw;padding: unset;color: lightgray; font-family: 'Bahnschrift light'">
                 <input type="number" pattern="\d*" class="parameter"
-                       name="field1" min="0" placeholder="0 ks" required style="margin-top: 0.9vw;">
+                       name="field1" min="0" placeholder="0 ks" required style="margin-top: 0.9vw; background-color: #E43A45">
                 x <span id="p1" style="font-size: 5.532vw;font-family: 'Bahnschrift light'"></span>
             </div>
             <div class="col-1 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
@@ -70,7 +70,7 @@
             <div class="col-5 text-center"
                  style="font-size: 5.532vw;padding: unset;color: lightgray; font-family: 'Bahnschrift light'">
                 <input type="number" pattern="\d*" class="parameter"
-                       name="field2" min="0" placeholder="0 ks" required style="margin-top: 0.9vw;">
+                       name="field2" min="0" placeholder="0 ks" required style="margin-top: 0.9vw; background-color: #B03D40">
                 x <span id="p2" style="font-size: 5.532vw;font-family: 'Bahnschrift light'"></span>
             </div>
             <div class="col-1 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
@@ -88,7 +88,7 @@
             <div class="col-5 text-center"
                  style="font-size: 5.532vw;padding: unset;color: lightgray; font-family: 'Bahnschrift light'">
                 <input type="number" pattern="\d*" class="parameter"
-                       name="field3" min="0" placeholder="0 ks" required style="margin-top: 0.9vw;">
+                       name="field3" min="0" placeholder="0 ks" required style="margin-top: 0.9vw; background-color: #E43A45">
                 x <span id="p3" style="font-size: 5.532vw;font-family: 'Bahnschrift light'"></span>
             </div>
             <div class="col-1 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
@@ -106,7 +106,7 @@
             <div class="col-5 text-center"
                  style="font-size: 5.532vw;padding: unset;color: lightgray; font-family: 'Bahnschrift light'">
                 <input type="number" pattern="\d*" class="parameter"
-                       name="field4" min="0" placeholder="0 ks" required style="margin-top: 0.9vw;">
+                       name="field4" min="0" placeholder="0 ks" required style="margin-top: 0.9vw; background-color: #B03D40">
                 x <span id="p4" style="font-size: 5.532vw;font-family: 'Bahnschrift light'"></span>
             </div>
             <div class="col-1 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
@@ -125,7 +125,7 @@
             <div class="col-5 text-center"
                  style="font-size: 5.532vw;padding: unset;color: lightgray; font-family: 'Bahnschrift light'">
                 <input type="number" pattern="\d*" class="parameter"
-                       name="field5" min="0" placeholder="0 ks" required style="margin-top: 0.9vw;">
+                       name="field5" min="0" placeholder="0 ks" required style="margin-top: 0.9vw; background-color: #E43A45">
                 x <span id="p5" style="font-size: 5.532vw;font-family: 'Bahnschrift light'"></span>
             </div>
             <div class="col-1 text-center text-white" style="font-size: 5.532vw;padding: unset;margin-top: 0.638vw;">
@@ -171,13 +171,19 @@
 </div>
 
 <script>
-    // init
-    for (let field in prices) {
-        let price = prices[field][0]; // Prednastavená cena pre počet fotiek < 10
-        $("#" + field.replace("field", "p")).html(price.toFixed(2).toString().replace(".", ",") + "€");
-    }
-
     $(document).ready(function () {
+
+        // init
+        for (let field in prices) {
+            let price = prices[field][0]; // Prednastavená cena pre počet fotiek < 10
+            $("#" + field.replace("field", "p")).html(price.toFixed(2).toString().replace(".", ",") + "€");
+        }
+
+        setTimeout(function() {
+            // Fokus na input po načítaní stránky
+            $("input[name='field1']").focus();
+        }, 1000);
+
         // Pre každé pole s fotkami
         $(".parameter").on("input", function () {
             let total = 0;
